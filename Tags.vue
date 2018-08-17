@@ -6,6 +6,7 @@
         :key="tag"
         :tag="tag"
         :index="i"
+        :tagColor="color"
         @removeTagEvent="removeTheOne($event)"></appTag>
       <input
         type="text"
@@ -26,12 +27,10 @@
     props: {
       value: {
         required: false
-      }
-    },
-    data() {
-      return {
-        tags: [],
-        error: null
+      },
+      color : {
+        required : false,
+        default : "primary"
       }
     },
     methods: {
@@ -67,11 +66,16 @@
         this.$emit("input", this.tags.join(","));
       }
     },
+    data() {
+      return {
+        tags: [],
+        error: null
+      }
+    },
     created() {
       if (this.value) {
         if (this.value.length > 0) {
           const tag_list = this.value.split(",");
-          console.log(tag_list);
           this.tags = tag_list;
         }
       }
@@ -85,14 +89,12 @@
     width: 100%;
     font-family: Arial;
   }
-
   input {
     width: 100px;
     height: 30px;
     outline: none;
     font-family: Arial;
   }
-
   .error {
     color: purple;
   }
