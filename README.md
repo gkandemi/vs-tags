@@ -1,4 +1,4 @@
--tags
+# vs-tags
 
 This is Tags Input Component created by VueJS
 
